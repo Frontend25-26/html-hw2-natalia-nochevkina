@@ -18,6 +18,8 @@
     --background-margin-right: calc(100% - var(--background-margin-left));
 
     --main-color: #ffff00;
+    --secondary-color: #b700ff;
+    --main-gradient: linear-gradient(90deg, #ff0080, #7928ca, #2afadf);
 
     --animation-shadow: 0 0 3px;
     --glitch-animation: glitch-animation 0.8s linear infinite;
@@ -52,11 +54,19 @@ body {
     animation: var(--glitch-animation);
 }
 
+audio::-webkit-media-controls-panel {
+    background-color: var(--secondary-color);
+}
+
 hr {
     border: none;
     height: 2px;
-    background: linear-gradient(90deg, #ff0080, #7928ca, #2afadf);
-    animation: var(--color-change-animation);}
+    background: var(--main-gradient);
+}
+
+mark {
+    background: var(--secondary-color);
+}
 
 /*Info*/
 input {
@@ -173,7 +183,7 @@ i {
 
 /*Facts*/
 .fact:hover {
-    color: #ff00ff;
+    color: var(--secondary-color);
     text-shadow: var(--animation-shadow)  #ff00ff;
 }
 
