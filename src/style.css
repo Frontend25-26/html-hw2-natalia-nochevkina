@@ -84,6 +84,14 @@ input {
     display: block;
 }
 
+.dialog {
+    animation: var(--glitch-animation);
+}
+
+.dialog::before, .dialog::after {
+    content: "'";
+}
+
 /*Masks*/
 .mask-grid {
     display: grid;
