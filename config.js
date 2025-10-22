@@ -1,1 +1,1 @@
-export const REPO_NAME = '/hw2-nochevkina-natalia'
+export const REPO_NAME = '/html-hw2-natalia-nochevkina/'
