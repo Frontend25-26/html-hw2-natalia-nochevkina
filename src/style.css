@@ -48,9 +48,15 @@ body {
     color: var(--main-color);
 }
 
-:link:hover, :visited:hover, em:hover, h1:hover {
+:link:hover, :visited:hover, em:hover, h1:hover, strong:hover {
     animation: var(--glitch-animation);
 }
+
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, #ff0080, #7928ca, #2afadf);
+    animation: var(--color-change-animation);}
 
 /*Info*/
 input {
@@ -82,6 +88,10 @@ input {
 
 .info-header-check:checked + .info-header + .info-description {
     display: block;
+}
+
+i {
+    animation: var(--color-change-animation);
 }
 
 .dialog {
