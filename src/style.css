@@ -1,6 +1,192 @@
-body {
-    margin: 0;
-    padding: 0;
+/* Orbitron */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+/* Exo 2 */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&display=swap');
+/* Jura */
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;700&display=swap');
+/* Electrolize */
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+/* Russo One */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+/* Press Start 2P */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-    background: #292929;
+* {
+    --background-image: url("back/background.png");
+    --background-color: rgba(20, 0, 20, 0.95);
+    --background-margin-left: max(10%, calc((100% - 1000px) / 2));;
+    --background-margin-right: calc(100% - var(--background-margin-left));
+
+    --main-color: #ffff00;
+
+    --animation-shadow: 0 0 3px;
+    --glitch-animation: glitch-animation 0.8s linear infinite;
+    --color-change-animation: text-color-change 5s linear infinite;
+}
+
+body {
+    margin: 0 var(--background-margin-left);
+    padding: 1em;
+
+    font-family: 'Jura', monospace;
+    line-height: 1.8;
+    text-align: center;
+    color: var(--main-color);
+
+    background: linear-gradient(to right,
+        transparent var(--background-margin-left),
+        var(--background-color) var(--background-margin-left),
+        var(--background-color) var(--background-margin-right),
+        transparent var(--background-margin-right)
+    ),
+    var(--background-image) no-repeat fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+:link, :visited, :active {
+    color: var(--main-color);
+}
+
+:link:hover, :visited:hover, em:hover, h1:hover {
+    animation: var(--glitch-animation);
+}
+
+/*Info*/
+input {
+    display: none;
+}
+
+.info-header {
+    text-align: left;
+    font-size: x-large;
+}
+
+.info-description {
+    margin: auto;
+    max-width: 1000px;
+    text-align: left;
+    display: none;
+}
+
+.info-header-check:checked,
+.info-header-check:hover {
+    & + .info-header {
+        animation: var(--color-change-animation);
+    }
+}
+
+.info-header-check:checked + .info-header + .info-description {
+    display: block;
+}
+
+.info-header-check:checked + .info-header + .info-description {
+    display: block;
+}
+
+/*Masks*/
+.mask-grid {
+    display: grid;
+    align-items: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    max-width: 1fr;
+    margin: 0 auto;
+}
+
+.mask-card {
+    display: flex;
+    align-items: flex-start;
+    /* align-items: center; */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mask-image {
+    filter: drop-shadow(var(--animation-shadow)  var(--main-color));
+    flex-shrink: 0;
+    object-fit: contain;
+    width: 150px;
+    height: 150px;
+}
+
+.mask-info {
+    padding: 2em;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mask-name {
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+}
+
+.mask-ability {
+    text-align: left;
+}
+
+.mask-description {
+    text-align: right;
+    margin-top: auto;
+}
+
+/*Mask animations*/
+.mask-card:hover {
+    transform: translateX(-0.5em);
+}
+
+.mask-card:hover .mask-image {
+    animation: masks-animation 1.5s ease-in-out infinite,
+               image-shadow 5s linear infinite;
+}
+
+.mask-card:hover .mask-table-description {
+    animation: var(--color-change-animation);
+}
+
+.mask-card:hover .mask-info {
+    transform: scale(1.1);
+    animation: var(--color-change-animation);
+}
+
+.mask-card:hover .mask-ability {
+    animation: var(--glitch-animation);
+}
+
+/*Facts*/
+.fact:hover {
+    color: #ff00ff;
+    text-shadow: var(--animation-shadow)  #ff00ff;
+}
+
+/*Animations*/
+@keyframes masks-animation {
+    0%, 100% { transform: scale(1);    rotate: 10deg; }
+    50%      { transform: scale(1.05); rotate: -5deg; }
+}
+
+@keyframes text-color-change {
+    0%   { color: #ff0080; text-shadow: var(--animation-shadow)  #ff0080; }
+    20%  { color: #ff00ff; text-shadow: var(--animation-shadow)  #ff00ff; }
+    40%  { color: #00ffff; text-shadow: var(--animation-shadow)  #00ffff; }
+    60%  { color: #000dff; text-shadow: var(--animation-shadow)  #000dff; }
+    80%  { color: #ff00ff; text-shadow: var(--animation-shadow)  #ff00ff; }
+    100%  { color: #ff0080; text-shadow: var(--animation-shadow)  #ff0080; }
+}
+
+@keyframes image-shadow {
+    0%   { filter: drop-shadow(var(--animation-shadow)  #ff0080); }
+    20%  { filter: drop-shadow(var(--animation-shadow)  #ff00ff); }
+    40%  { filter: drop-shadow(var(--animation-shadow)  #00ffff); }
+    60%  { filter: drop-shadow(var(--animation-shadow)  #ffff00); }
+    80%  { filter: drop-shadow(var(--animation-shadow)  #ff00ff); }
+    100% { filter: drop-shadow(var(--animation-shadow)  #ff0080); }
+}
+
+@keyframes glitch-animation {
+    0%   { color: #ff0080; text-shadow: 3px 3px #00ffff, -3px -3px #ffff00; }
+    35%  { color: #00ffff; text-shadow: -3px 3px #ff0080, 3px -3px #ffff00; }
+    50%  { color: #ffff00; text-shadow: 3px -3px #ff0080, -3px 3px #00ffff; }
+    75%  { color: #ff00ff; text-shadow: -3px -3px #00ffff, 3px 3px #ffff00; }
+    100% { color: #ff0080; text-shadow: 3px 3px #00ffff, -3px -3px #ffff00; }
 }
